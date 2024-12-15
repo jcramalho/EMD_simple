@@ -1,0 +1,27 @@
+version: "3"
+services:
+  app:
+    container_name: emd_web_server
+    image: zzglider/jcr_cv_interface:latest
+    ports:
+      - "13001:3027"
+    depends_on:
+      - data_server
+    networks:
+      - cvnet
+  data_server:
+    container_name: emd_data_server
+    image: zzglider/jcr_cv:latest
+    ports:
+      - "13002:3000"
+    networks:
+      - cvnet
+networks:
+  cvnet:
+    name: cvnet
+    driver: bridge
+
+
+
+    
+  
