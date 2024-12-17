@@ -1,11 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import logger from 'morgan';
+import { fileURLToPath } from 'url';
 
-var indexRouter = require('./routes/index');
+import indexRouter from './routes/index.js';
 
-var app = express();
+const __filename = fileURLToPath(import.meta.url); // Necessário para obter o caminho do arquivo no ESM
+const __dirname = path.dirname(__filename);
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,4 +38,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;

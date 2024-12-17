@@ -1,5 +1,50 @@
-extends layout
+extends layout-dataTables
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+    .w3-container(id="displayEMD")
+  
+    .w3-card-4
+      header.w3-container.w3-teal
+        h3.w3-left 
+          i.fa.fa-user-md.w3-margin-right
+          span Lista de Exames Médicos Desportivos Registados (#{lista.length})
+        button.w3-btn.w3-round-large.w3-white.w3-right.w3-margin
+          a(href="/novoRegisto" id="novo") Registar
+        button.w3-btn.w3-round-large.w3-white.w3-right.w3-margin
+          a(href="/exportCSV") Exportar
+      if lista.length > 0
+        .w3-container 
+          table.w3-table-all.display(id='listaEMD')
+            thead
+              tr 
+                th Id
+                th Data
+                th Nome
+                th Modalidade
+                th Resultado
+                th Pagamento
+                th Operações
+            tbody
+              each e in lista
+                tr(id=e.id, class='emd', onclick="showEMD2("+JSON.stringify(e)+")")
+                  td= e.id
+                  td= e.dataExame
+                  td= e.nome
+                  td= e.modalidade
+                  td= e.resultadoEMD
+                  td= e.pagamento
+                  td
+                    button.w3-btn.w3-blue.w3-round-large.w3-margin-right(onclick="showEMD2("+JSON.stringify(e)+")")
+                      i.fa.fa-eye
+                    button.w3-btn.w3-orange.w3-round-large.w3-margin-right 
+                      a(href="/editRegisto/" + e.id) 
+                        i.fa.fa-pencil
+                    button.w3-btn.w3-red.w3-round-large.w3-margin-right 
+                      a(href="/delRegisto/" + e.id) 
+                        i.fa.fa-trash
+      else
+        div(class="w3-container")
+          p Ainda não há exames registados...
+      footer(class="w3-container w3-teal")
+        address Gerado por EMD :: #{data} @jcr

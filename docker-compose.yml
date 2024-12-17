@@ -1,25 +1,23 @@
-version: "3"
+version: "3.8"
+
 services:
-  app:
-    container_name: emd_web_server
-    image: zzglider/jcr_cv_interface:latest
+  api:
+    image: zzglider/emd_data_server
+    container_name: emd_api
+    volumes:
+      - ./api_data/db.json:/app/db.json
     ports:
-      - "13001:3027"
+      - "3001:3000"
+
+  frontend:
+    image: zzglider/emd_web_server
+    container_name: emd_interface
+    ports:
+      - "28000:28000"
+    environment:
+      - API_URL=http://api:3000
     depends_on:
-      - data_server
-    networks:
-      - cvnet
-  data_server:
-    container_name: emd_data_server
-    image: zzglider/jcr_cv:latest
-    ports:
-      - "13002:3000"
-    networks:
-      - cvnet
-networks:
-  cvnet:
-    name: cvnet
-    driver: bridge
+      - api
 
 
 
