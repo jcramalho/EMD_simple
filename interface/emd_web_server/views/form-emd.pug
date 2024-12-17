@@ -1,0 +1,90 @@
+extends layout
+
+block content
+    .w3-card-4
+        header(class="w3-container w3-teal")
+            h3 Registo de Novo EMD
+
+        form.w3-container.w3-margin(class='w3-container' method='POST' action='/emd')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Data de realização do EMD
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='dataExame' placeholder='Introduza a data de realização do EMD')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Nome
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='nome' placeholder='Introduza o nome')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Género
+                .w3-col.s9
+                    input.w3-radio(type='radio' name='genero' value='Masculino' checked)
+                    label Masculino
+                    input.w3-radio(type='radio' name='genero' value='Feminino')
+                    label Feminino
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Data de nascimento
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='dataNasc' placeholder='Introduza a data de nascimento')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal NIF
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='nif' placeholder='Introduza o NIF')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Morada
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='morada' placeholder='Introduza a morada')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Contacto/email
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='contacto' placeholder='Introduza o contacto/email')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Federado
+                .w3-col.s9
+                    input.w3-radio(type='radio' name='federado' value='true' checked)
+                    label Sim
+                    input.w3-radio(type='radio' name='federado' value='false')
+                    label Não
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Modalidade
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='modalidade' placeholder='Introduza a modalidade')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Clube
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='clube' placeholder='Introduza o clube')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Resultado do EMD
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='resultadoEMD' placeholder='Introduza o resultado do EMD')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Exame complementar
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='exameComplementar' placeholder='Introduza exame complementar')
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Pagamento
+                .w3-col.s9    
+                    input.w3-radio(type='radio' name='pagamento' value='Sim' checked)
+                    label Pago
+                    input.w3-radio(type='radio' name='pagamento' value='Não')
+                    label Não pago
+            
+            .w3-row.w3-margin-top
+                input.w3-btn.w3-teal.w3-round-large.w3-margin-right(type='submit' value='Adicionar')
+                button.w3-btn.w3-teal.w3-round-large.w3-margin-right 
+                    a(href="/") Voltar sem adicionar
+
+        footer(class="w3-container w3-teal")
+            address Gerado por EMD :: #{data} @jcr

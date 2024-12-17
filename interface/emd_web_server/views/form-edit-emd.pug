@@ -1,0 +1,107 @@
+extends layout
+
+block content
+    .w3-card-4
+        header(class="w3-container w3-teal")
+            h3 Alterar EMD
+
+        form.w3-container.w3-margin(method='POST' action='/emdAlterado')
+            input(type="hidden" name="id" value=emd.id)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Data de realização do EMD
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='dataExame' value=emd.dataExame)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Nome
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='nome' value=emd.nome)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Género
+                .w3-col.s9
+                    if (emd.genero == "Masculino")
+                        input.w3-radio(type='radio' name='genero' value='Masculino' checked)
+                        label Masculino
+                        input.w3-radio(type='radio' name='genero' value='Feminino')
+                        label Feminino
+                    else
+                        input.w3-radio(type='radio' name='genero' value='Masculino')
+                        label Masculino
+                        input.w3-radio(type='radio' name='genero' value='Feminino' checked)
+                        label Feminino
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Data de nascimento
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='dataNasc' value=emd.dataNasc)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3     
+                    label.w3-text-teal NIF
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='nif' value=emd.nif)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3     
+                    label.w3-text-teal Morada
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='localidade' value=emd.morada)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3      
+                    label.w3-text-teal Contacto/email
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='contacto' value=emd.contacto)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3 
+                    label.w3-text-teal Federado
+                .w3-col.s9  
+                    if emd.federado
+                        input.w3-radio(type='radio' name='federado' value='true' checked)
+                        label Sim
+                        input.w3-radio(type='radio' name='federado' value='false')
+                        label Não
+                    else
+                        input.w3-radio(type='radio' name='federado' value='true')
+                        label Sim
+                        input.w3-radio(type='radio' name='federado' value='false' checked)
+                        label Não
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Modalidade
+                .w3-col.s9.w3-border 
+                    input.w3-input(type='text' name='modalidade' value=emd.modalidade)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Clube
+                .w3-col.s9.w3-border 
+                    input.w3-input(type='text' name='clube' value=emd.clube)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Resultado do EMD
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='resultadoEMD' value=emd.resultadoEMD)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Exame complementar
+                .w3-col.s9.w3-border
+                    input.w3-input(type='text' name='exameComplementar' value=emd.exameComplementar)
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Pagamento
+                .w3-col.s9
+                    if emd.pagamento == "Sim"
+                        input.w3-radio(type='radio' name='pagamento' value='Sim' checked)
+                        label Pago
+                        input.w3-radio(type='radio' name='pagamento' value='Não')
+                        label Não pago
+                    else
+                        input.w3-radio(type='radio' name='pagamento' value='Sim')
+                        label Pago
+                        input.w3-radio(type='radio' name='pagamento' value='Não' checked)
+                        label Não pago
+            .w3-row.w3-margin-top
+                input.w3-btn.w3-teal.w3-round-large.w3-margin-right(type='submit' value='Alterar')
+                button.w3-btn.w3-teal.w3-round-large.w3-margin-right 
+                    a(href="/") Voltar sem alterar
+        footer.w3-container.w3-teal
+            address Gerado por EMD :: #{data} @jcr

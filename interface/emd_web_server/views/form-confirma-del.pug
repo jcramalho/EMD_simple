@@ -1,0 +1,80 @@
+extends layout
+
+block content
+    .w3-card-4
+        header(class="w3-container w3-teal")
+            h3 Apagar EMD: CONFIRMAÇÂO
+
+        form.w3-container.w3-margin
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Identificador
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.id
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Data de realização do EMD
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.dataExame
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Nome
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.nome
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Género
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.genero
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Data de nascimento
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.dataNasc
+            .w3-row.w3-margin-bottom
+                .w3-col.s3     
+                    label.w3-text-teal NIF
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.nif
+            .w3-row.w3-margin-bottom
+                .w3-col.s3     
+                    label.w3-text-teal Morada
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.morada
+            .w3-row.w3-margin-bottom
+                .w3-col.s3      
+                    label.w3-text-teal Contacto/email
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.contacto
+            .w3-row.w3-margin-bottom
+                .w3-col.s3 
+                    label.w3-text-teal Federado
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.federado
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Modalidade
+                .w3-col.s9.w3-border.w3-padding 
+                    p= emd.modalidade
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Clube
+                .w3-col.s9.w3-border.w3-padding 
+                    p= emd.clube
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Resultado do EMD
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.resultadoEMD
+            .w3-row.w3-margin-bottom
+                .w3-col.s3
+                    label.w3-text-teal Pagamento
+                .w3-col.s9.w3-border.w3-padding
+                    p= emd.pagamento
+            .w3-row.w3-margin-top
+                button.w3-btn.w3-green.w3-round-large.w3-margin-right
+                    a(href="/emdApagado/" + emd.id) Apagar
+                button.w3-btn.w3-red.w3-round-large.w3-margin-right 
+                    a(href="/") Cancelar
+        footer.w3-container.w3-teal
+            address Gerado por EMD :: #{data} @jcr

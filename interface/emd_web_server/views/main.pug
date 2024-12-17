@@ -1,0 +1,45 @@
+extends layout-main
+
+block content
+    .bgimg
+        .topleft
+            p Logo
+        .middle
+            h1 Exames Médicos Desportivos 
+            hr
+            p(id='data')
+            hr
+            .w3-container
+                button.w3-button.w3-round-xlarge.w3-teal.w3-margin-right 
+                    a(href="#ex2" rel="modal:open") Entrar
+                button.w3-button.w3-round-xlarge.w3-teal 
+                    a(href="#ex3" rel="modal:open") Registar
+        .bottomright
+            address Gerada por EMDApp, Dez. 2020, jcr</address>
+        
+        form.modal.w3-container(action="/users/login" method="POST" id="ex2" style="display:none;")
+            h3 Introduza as suas credenciais para entrar:
+            p
+                label Email:
+                input.w3-input(type="text" name="email")
+            p
+                label Password:
+                input.w3-input(type="password" name="password")
+            p
+                input(type="submit" value="Login") 
+
+        form.modal.w3-container(action="/users/registo" method="POST" id="ex3" style="display:none;")
+            h3 Introduza os seus dados para registo:
+            p
+                label Email:
+                input.w3-input(type="text" name="email")
+            p
+                label Nome:
+                input.w3-input(type="text" name="nome")
+            p
+                label Password:
+                input.w3-input(type="password" name="password")
+            p
+                input(type="submit" value="Login") 
+
+    script var d = new Date(); $("#data").text(d.toISOString().substr(0,10));
