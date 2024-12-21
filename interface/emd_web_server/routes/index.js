@@ -9,9 +9,20 @@ import { createObjectCsvWriter } from 'csv-writer';
    ----------------------------------------------------------- */
 router.get('/', function(req, res) {
   var data = new Date().toISOString().substring(0, 16)
-  axios.get(API_URL + '/emds?_sort=dataExame&_order=desc')
+  axios.get(API_URL + '/emds')
     .then(response => {
-      res.render('index', { lista: response.data, data: data });
+      const emdsOrdenados = response.data.sort((a, b) => {
+        let result = 0
+        // Ordenação decrescente por dataExame
+        if (a.dataExame > b.dataExame) result = -1;
+        else 
+          if (a.dataExame < b.dataExame) result =  1;
+        // Ordenação ascendente por nome (em caso de empate na dataExame)
+          else
+          result = a.nome.localeCompare(b.nome);
+        return result
+      });
+      res.render('index', { lista: emdsOrdenados, data: data });
     })
     .catch(error => {
       res.render('error', {error: error});
@@ -94,9 +105,24 @@ router.post('/emdAlterado', function(req,res){
 })
 
 /* ----------------------------------------------------------- 
-   APAGAR UM REGISTO:
+   APAGAR UM REGISTO (PARTE1):
+   Pede a confirmação ao utilizador
    ----------------------------------------------------------- */
-router.get('/delRegisto/:id', function(req,res){
+  router.get('/delRegisto/:id', function(req,res){
+    var data = new Date().toISOString().substring(0, 16)
+    axios.get(API_URL + '/emds/' + req.params.id)
+    .then(response => {
+      res.render('form-confirma-del', { emd: response.data, data: data });
+    })
+    .catch(error => {
+      res.render('error', {error: error});
+    });
+  })
+/* ----------------------------------------------------------- 
+   APAGAR UM REGISTO (PARTE2):
+   Apaga o registo
+   ----------------------------------------------------------- */
+router.get('/emdApagado/:id', function(req,res){
     var data = new Date().toISOString().substring(0, 16)
     axios.delete(API_URL + '/emds/' + req.params.id)
       .then(response => {

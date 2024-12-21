@@ -19,13 +19,13 @@ $(()=>{
                 "sortAscending": ": ordenar ascendentemente",
                 "sortDescending": ": ordenar descendentemente"
             }
-        },
+        }//,
         // Configurar a ordenação multi-coluna: 
         // 1ª coluna (índice 1) - Descendente e 2ª coluna (índice 0) - Descendente
-        "order": [
-            [1, 'desc'], // Ordena pela segunda coluna (índice 1) de forma descendente
-            [0, 'desc']  // Ordena pela primeira coluna (índice 0) de forma descendente
-        ]
+        //"order": [
+        //    [1, 'desc'], // Ordena pela segunda coluna (índice 1) de forma descendente
+        //    [0, 'desc']  // Ordena pela primeira coluna (índice 0) de forma descendente
+        //]
     });
 });
     

@@ -10,7 +10,8 @@ block content
                 .w3-col.s3
                     label.w3-text-teal Data de realização do EMD
                 .w3-col.s9.w3-border
-                    input.w3-input(type='text' name='dataExame' placeholder='Introduza a data de realização do EMD')
+                    input.w3-input(type='text' name='dataExame' placeholder='Data da realização do exame: AAAA-MM-DD'
+                                    pattern='\\d{4}-\\d{2}-\\d{2}' title='Introduza a data no formato AAAA-MM-DD' required)
             .w3-row.w3-margin-bottom
                 .w3-col.s3
                     label.w3-text-teal Nome
@@ -28,7 +29,8 @@ block content
                 .w3-col.s3
                     label.w3-text-teal Data de nascimento
                 .w3-col.s9.w3-border
-                    input.w3-input(type='text' name='dataNasc' placeholder='Introduza a data de nascimento')
+                    input.w3-input(type='text' name='dataNasc' placeholder='Data de nascimento: AAAA-MM-DD'
+                                    pattern='\\d{4}-\\d{2}-\\d{2}' title='Introduza a data no formato AAAA-MM-DD')
             .w3-row.w3-margin-bottom
                 .w3-col.s3
                     label.w3-text-teal NIF
