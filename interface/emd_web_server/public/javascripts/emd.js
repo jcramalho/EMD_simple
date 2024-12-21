@@ -19,7 +19,9 @@ $(()=>{
                 "sortAscending": ": ordenar ascendentemente",
                 "sortDescending": ": ordenar descendentemente"
             }
-        }//,
+        },
+        order: [] // Não aplica ordenação inicial
+        
         // Configurar a ordenação multi-coluna: 
         // 1ª coluna (índice 1) - Descendente e 2ª coluna (índice 0) - Descendente
         //"order": [

@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
           if (a.dataExame < b.dataExame) result =  1;
         // Ordenação ascendente por nome (em caso de empate na dataExame)
           else
-          result = a.nome.localeCompare(b.nome);
+            result = a.nome.localeCompare(b.nome, "pt");
         return result
       });
       res.render('index', { lista: emdsOrdenados, data: data });
